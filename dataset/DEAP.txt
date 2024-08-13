@@ -1,0 +1,3 @@
+In DEAP, 32 participants' EEG signals were recorded as each watched 40 one-minute long excerpts of music videos.
+One can get detailed information and  download this dataset from the following link.
+https://www.eecs.qmul.ac.uk/mmv/datasets/deap/

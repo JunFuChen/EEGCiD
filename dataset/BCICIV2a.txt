@@ -1,0 +1,4 @@
+The dataset captured EEG signals from nine subjects in a motor imagery task. 
+Twenty-two Ag/AgCl electrodes (with inter-electrode distances of 3.5 cm) were used to record the EEG. 
+One can get detailed information and  download this dataset from the following link.
+https://www.bbci.de/competition/iv/#dataset2a

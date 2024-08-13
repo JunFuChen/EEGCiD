@@ -1,0 +1,5 @@
+The dataset was collected from two people (1 male, 1 female) for 3 minutes per state - positive, neutral, negative. 
+a Muse EEG  headband was used to record the TP9, AF7, AF8 and TP10 EEG placements via dry electrodes. 
+Six minutes of resting neutral data is also recorded, the stimuli used to evoke the emotions are below
+One can get detailed information and  download this dataset from the following link.
+https://www.kaggle.com/datasets/birdy654/eeg-brainwave-dataset-feeling-emotions
