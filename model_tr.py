@@ -3,29 +3,6 @@ import torch
 import torch.nn as nn
 import numpy as np
 import math
-from timm.models.vision_transformer import   Mlp
-
-
-def modulate(x, shift, scale):
-    return x * (1 + scale.unsqueeze(1)) + shift.unsqueeze(1)
-
-
-
-class TokenEmbedding(nn.Module):
-    def __init__(self, c_in, d_model):
-        super(TokenEmbedding, self).__init__()
-        padding = 1 if torch.__version__ >= '1.5.0' else 2
-        self.tokenConv = nn.Conv1d(in_channels=c_in, out_channels=d_model,
-                                   kernel_size=3, padding=padding, padding_mode='circular', bias=False)
-        for m in self.modules():
-            if isinstance(m, nn.Conv1d):
-                nn.init.kaiming_normal_(m.weight, mode='fan_in', nonlinearity='leaky_relu')
-
-    def forward(self, x):
-        x = x.type(torch.FloatTensor).to(device=x.device)
-        x = self.tokenConv(x.permute(0, 2, 1)).transpose(1, 2)
-        return x
-
 
 
 
@@ -218,21 +195,19 @@ class DiffT(nn.Module):
 
     def __init__(
         self,
-        input_size=128,
-        patch_size=22,
+        input_size=750,
         in_channels=22,
-        hidden_size=512,
+        hidden_size=1024,
         depth=3,
         num_heads=8,
-        class_dropout_prob=0.1,
-        num_classes=1000,
+        class_dropout_prob=0.0,
+        num_classes=2,
         learn_sigma=False,
     ):
         super().__init__()
         self.learn_sigma = learn_sigma
         self.in_channels = in_channels
         self.out_channels = in_channels * 2 if learn_sigma else in_channels
-        self.patch_size = patch_size
         self.num_heads = num_heads
 
         self.x_embedder = TokenEmbedding(input_size, hidden_size)
